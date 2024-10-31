@@ -69,13 +69,13 @@ function App() {
   return (
     <>
       <div>
-        <h1>Encuesta Promotores</h1>
+        <h1>Encuestas</h1>
         <div>
         <p>1. Nombre:</p>
-        <input type='text' value={one} onChange={(e) => setOne(e.target.value)}/>
+        <input type='text' required value={one} onChange={(e) => setOne(e.target.value)}/>
         <br/>
         <p>2. Correo</p>
-        <input type='text' value={two} onChange={(e) => setTwo(e.target.value)}/>
+        <input type='text' required value={two} onChange={(e) => setTwo(e.target.value)}/>
         <p>3. ¿Cuál es tu edad?</p>
         <input type="range" min="15" max="80" step={1} value={three} onChange={(e) => setThree(e.target.value)}/>
         <p>Edad: {three}</p>
@@ -170,11 +170,16 @@ function App() {
         <br/>
         <button type="submit" onClick={handleSubmit}>Enviar</button>
         </div>
+        <hr />
       </div>
         <div>
-          {showForms === false ? (
+          <button onClick={() => setShowForms(!showForms)}>Ver encuestas</button>
+        </div>
+
+        <div>
+          {showForms === true ? (
             <GetForm />):(
-            <p>Nada</p>
+            <p></p>
           )}
         </div>
       <ToastContainer />

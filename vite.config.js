@@ -1,12 +1,17 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import dotenv from 'dotenv';
 
+dotenv.config()
+
+const apiUrl = process.env.VITE_API_URL
 export default defineConfig({
+  
   plugins: [react()],
   server: {
     proxy: {
       '/api': {
-        target: import.meta.env.VITE_API_URL, // Asegúrate de que empieza con VITE_
+        target: apiUrl,
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },

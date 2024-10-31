@@ -15,12 +15,14 @@ function GetForm() {
 
     return (
         <div>
-            <h1>Encuesta Promotores</h1>
+            <h1>Encuestas</h1>
             {data.length === 0 ? (
                 <p>Cargando...</p>
             ) : (
                 data.map((item, i) => (
                     <div key={i} className="survey-item">
+                        <p>ID: {item.id}</p>
+                        <p>Fecha: {item.date}</p>
                         <p>Nombre: {item.question_1}</p>
                         <p>Correo: {item.question_2}</p>
                         <p>Edad: {item.question_3}</p>
@@ -34,10 +36,11 @@ function GetForm() {
                         <p>¿Alguna vez has comprado en nuestra empresa o vendido algo a nosotros?: {item.question_11}</p>
                         <p>¿Cómo conociste esta empresa?: {item.question_12}</p>
                         <p>Puntúa esta empresa: {item.question_13}</p>
+                        <hr />
                     </div>
                 ))
             )}
-            {JSON.stringify(data)}
+        
         </div>
     );
 }
