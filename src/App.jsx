@@ -3,6 +3,7 @@ import './App.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import GetForm from './getForm';
+import GetSingleForm from './getSingleForm';
 
 function App() {
   const [one, setOne] = useState('')
@@ -181,6 +182,11 @@ function App() {
             <GetForm />):(
             <p></p>
           )}
+        </div>
+
+        <hr />
+        <div>
+            <GetSingleForm />
         </div>
       <ToastContainer />
     </>

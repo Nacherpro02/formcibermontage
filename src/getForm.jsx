@@ -42,7 +42,7 @@ function GetForm() {
             )}
         
         </div>
-    );
+    )
 }
 
-export default GetForm;
+export default GetForm

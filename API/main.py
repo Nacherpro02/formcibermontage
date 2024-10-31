@@ -78,6 +78,33 @@ def get_data():
     if forms is not None:
       return jsonify(forms)
 
+@app.route("/get_data/<int:id>", methods=["GET"])
+def get_data_by_id(id):
+  connection = connect_db()
+  cursor = connection.cursor()
+  if request.method == "GET":
+    sql = "SELECT * FROM form_table WHERE id = %s"
+    cursor.execute(sql, (id,))
+    rows = cursor.fetchall()
+    for row in rows:
+      form = row
+    if form is not None:
+      return jsonify(form)
+    else:
+      return "That form doesn't exist"
+
+
+@app.route("/delete_data", methods=["DELETE"])
+def delete_data():
+  connection = connect_db()
+  cursor = connection.cursor()
+  if request.method == "DELETE":
+    form = request.json
+    id = form.get("id")
+    sql = "DELETE FROM form_table WHERE id = %s"
+    cursor.execute(sql, (id,))
+    connection.commit()
+    return f"Formulario con id {id} eliminado correctamente"
 
 
 if __name__ == "__main__":
